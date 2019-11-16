@@ -1,6 +1,9 @@
-### Nighty Timer
+# Nighty Timer
 - A easy and fashion timer
 - Not completed  
+
+example:<img src="/pic/example.png" alt="My cool timer"/>
+
 ---
 ### TODO List
 - [x] GUI
