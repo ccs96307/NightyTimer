@@ -26,6 +26,7 @@ class MainWindow(QMainWindow):
         self.sec = 0
         self.timer = QTimer()
         self.timer.timeout.connect(self.LCDEvent)
+        self.ui.pushButton.setIcon(self.style().standardIcon(QStyle.SP_MediaPlay))
         self.ui.pushButton.clicked.connect(self.timeGo)
 
         # Shortcut
@@ -34,9 +35,11 @@ class MainWindow(QMainWindow):
 
     def timeGo(self):
         if self.start:
+            self.ui.pushButton.setIcon(self.style().standardIcon(QStyle.SP_MediaPause))
             self.timer.start(1000)
             self.start = False
         else:
+            self.ui.pushButton.setIcon(self.style().standardIcon(QStyle.SP_MediaPlay))
             self.timer.stop()
             self.start = True
 
@@ -54,10 +57,10 @@ class MainWindow(QMainWindow):
             self.setCursor(QCursor(Qt.OpenHandCursor))
             event.accept()
 
-    def mouseMoveEvent(self, QMouseEvent):
+    def mouseMoveEvent(self, event):
         if Qt.LeftButton and self.moveFlag:
-            self.move(QMouseEvent.globalPos() - self.movePosition)
-            QMouseEvent.accept()
+            self.move(event.globalPos() - self.movePosition)
+            event.accept()
 
     def mouseReleaseEvent(self, QMouseEvent):
         self.moveFlag = False
@@ -72,3 +75,4 @@ if __name__ == '__main__':
     window = MainWindow()
     window.show()
     sys.exit(app.exec_())
+

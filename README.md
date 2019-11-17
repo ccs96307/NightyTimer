@@ -9,7 +9,8 @@ example:<img src="/pic/example.png" alt="My cool timer"/>
 - [x] GUI
 - [x] No window title
 - [x] LCD tool display
-- [ ] Button icons
+- [x] Button icons
+- [ ] Restart button
 - [x] No stretching
 - [x] Timing
 - [ ] Countdown
