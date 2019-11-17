@@ -13,10 +13,13 @@ class MainWindow(QMainWindow):
         self.ui.setupUi(self)
 
         # Hide Window Title
+        self.setFixedSize(self.width(), self.height())
         self.setWindowFlag(Qt.FramelessWindowHint)
         self.setWindowOpacity(0.9)
         self.setAttribute(Qt.WA_TranslucentBackground)
         self.setCursor(Qt.CrossCursor)
+        self.screenWidth = QDesktopWidget().screenGeometry().width()
+        self.screenHeight = QDesktopWidget().screenGeometry().height()
 
         # LCD
         self.ui.lcdNumber.display('00:00')
@@ -30,6 +33,18 @@ class MainWindow(QMainWindow):
         self.ui.pushButton.clicked.connect(self.timeGo)
 
         # Shortcut
+        self.startShortcut = QShortcut(QKeySequence("Ctrl+s"), self)
+        self.startShortcut.activated.connect(self.timeGo)
+
+        self.leftMove = QShortcut(QKeySequence("Ctrl+left"), self)
+        self.leftMove.activated.connect(lambda: self.shortcutMoveEvent('left'))
+        self.leftMove = QShortcut(QKeySequence("Ctrl+right"), self)
+        self.leftMove.activated.connect(lambda: self.shortcutMoveEvent('right'))
+        self.leftMove = QShortcut(QKeySequence("Ctrl+up"), self)
+        self.leftMove.activated.connect(lambda: self.shortcutMoveEvent('up'))
+        self.leftMove = QShortcut(QKeySequence("Ctrl+down"), self)
+        self.leftMove.activated.connect(lambda: self.shortcutMoveEvent('down'))
+
         self.exit = QShortcut(QKeySequence("Ctrl+D"), self)
         self.exit.activated.connect(self.exitEvent)
 
@@ -65,6 +80,16 @@ class MainWindow(QMainWindow):
     def mouseReleaseEvent(self, QMouseEvent):
         self.moveFlag = False
         self.setCursor(Qt.CrossCursor)
+
+    def shortcutMoveEvent(self, direction):
+        if direction == 'left':
+            self.move(QPoint(0, self.pos().y()))
+        elif direction == 'right':
+            self.move(QPoint(self.screenWidth-self.width(), self.pos().y()))
+        elif direction == 'up':
+            self.move(QPoint(self.pos().x(), 0))
+        elif direction == 'down':
+            self.move(QPoint(self.pos().x(), self.screenHeight-self.height()))
 
     def exitEvent(self):
         sys.exit()
