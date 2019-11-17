@@ -38,7 +38,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>00:00:00</string>
+     <string/>
     </property>
     <property name="textFormat">
      <enum>Qt::AutoText</enum>
@@ -68,6 +68,22 @@ border-radius:35px;</string>
     </property>
     <property name="text">
      <string/>
+    </property>
+   </widget>
+   <widget class="QLCDNumber" name="lcdNumber">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>411</width>
+      <height>111</height>
+     </rect>
+    </property>
+    <property name="smallDecimalPoint">
+     <bool>false</bool>
+    </property>
+    <property name="segmentStyle">
+     <enum>QLCDNumber::Filled</enum>
     </property>
    </widget>
   </widget>

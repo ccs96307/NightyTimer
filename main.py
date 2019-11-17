@@ -14,8 +14,54 @@ class MainWindow(QMainWindow):
 
         # Hide Window Title
         self.setWindowFlag(Qt.FramelessWindowHint)
+        self.setWindowOpacity(0.9)
+        self.setAttribute(Qt.WA_TranslucentBackground)
+        self.setCursor(Qt.CrossCursor)
+
+        # LCD
+        self.ui.lcdNumber.display('00:00')
+
+        # Button
+        self.start = True
+        self.sec = 0
+        self.timer = QTimer()
+        self.timer.timeout.connect(self.LCDEvent)
+        self.ui.pushButton.clicked.connect(self.timeGo)
+
+        # Shortcut
         self.exit = QShortcut(QKeySequence("Ctrl+D"), self)
         self.exit.activated.connect(self.exitEvent)
+
+    def timeGo(self):
+        if self.start:
+            self.timer.start(1000)
+            self.start = False
+        else:
+            self.timer.stop()
+            self.start = True
+
+    def LCDEvent(self):
+        self.sec += 1
+
+        hour = self.sec//60
+        sec = self.sec%60
+        self.ui.lcdNumber.display('%02d:%02d' % (hour, sec))
+
+    def mousePressEvent(self, event):
+        if event.button() == Qt.LeftButton:
+            self.moveFlag = True
+            self.movePosition = event.globalPos() - self.pos()
+            self.setCursor(QCursor(Qt.OpenHandCursor))
+            event.accept()
+
+    def mouseMoveEvent(self, QMouseEvent):
+        if Qt.LeftButton and self.moveFlag:
+            self.move(QMouseEvent.globalPos() - self.movePosition)
+            QMouseEvent.accept()
+
+    def mouseReleaseEvent(self, QMouseEvent):
+        self.moveFlag = False
+        self.setCursor(Qt.CrossCursor)
 
     def exitEvent(self):
         sys.exit()
