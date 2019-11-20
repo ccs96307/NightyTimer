@@ -31,6 +31,12 @@ class MainWindow(QMainWindow):
         self.timer.timeout.connect(self.LCDEvent)
         self.ui.pushButton.setIcon(self.style().standardIcon(QStyle.SP_MediaPlay))
         self.ui.pushButton.clicked.connect(self.timeGo)
+        self.ui.pushButton_2.setIcon(self.style().standardIcon(QStyle.SP_MediaStop))
+        self.ui.pushButton_2.clicked.connect(self.initTime)
+        self.ui.pushButton_3.setIcon(self.style().standardIcon(QStyle.SP_TitleBarCloseButton))
+        self.ui.pushButton_3.clicked.connect(self.exitEvent)
+        self.ui.pushButton_4.hide()
+
 
         # Shortcut
         self.startShortcut = QShortcut(QKeySequence("Ctrl+s"), self)
@@ -47,6 +53,13 @@ class MainWindow(QMainWindow):
 
         self.exit = QShortcut(QKeySequence("Ctrl+D"), self)
         self.exit.activated.connect(self.exitEvent)
+
+    def initTime(self):
+        self.ui.lcdNumber.display('00:00')
+        self.sec = 0
+        self.start = True
+        self.ui.pushButton.setIcon(self.style().standardIcon(QStyle.SP_MediaPlay))
+        self.timer.stop()
 
     def timeGo(self):
         if self.start:

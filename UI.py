@@ -49,6 +49,42 @@ class Ui_MainWindow(object):
         self.lcdNumber.setSmallDecimalPoint(False)
         self.lcdNumber.setSegmentStyle(QtWidgets.QLCDNumber.Filled)
         self.lcdNumber.setObjectName("lcdNumber")
+        self.pushButton_2 = QtWidgets.QPushButton(self.centralwidget)
+        self.pushButton_2.setGeometry(QtCore.QRect(49, 111, 101, 39))
+        self.pushButton_2.setStyleSheet("color: rgb(255, 255, 255);\n"
+"background-color: rgb(150, 150, 150);\n"
+"border-style:none;\n"
+"border:1px solid #3f3f3f; \n"
+"\n"
+"padding:5px;\n"
+"min-height:20px;\n"
+"border-radius:35px;")
+        self.pushButton_2.setText("")
+        self.pushButton_2.setObjectName("pushButton_2")
+        self.pushButton_3 = QtWidgets.QPushButton(self.centralwidget)
+        self.pushButton_3.setGeometry(QtCore.QRect(251, 111, 101, 39))
+        self.pushButton_3.setStyleSheet("color: rgb(255, 255, 255);\n"
+"background-color: rgb(150, 150, 150);\n"
+"border-style:none;\n"
+"border:1px solid #3f3f3f; \n"
+"\n"
+"padding:5px;\n"
+"min-height:20px;\n"
+"border-radius:35px;")
+        self.pushButton_3.setText("")
+        self.pushButton_3.setObjectName("pushButton_3")
+        self.pushButton_4 = QtWidgets.QPushButton(self.centralwidget)
+        self.pushButton_4.setGeometry(QtCore.QRect(352, 111, 50, 39))
+        self.pushButton_4.setStyleSheet("color: rgb(255, 255, 255);\n"
+"background-color: rgb(150, 150, 150);\n"
+"border-style:none;\n"
+"border:1px solid #3f3f3f; \n"
+"\n"
+"padding:5px;\n"
+"min-height:20px;\n"
+"border-radius:35px;")
+        self.pushButton_4.setText("")
+        self.pushButton_4.setObjectName("pushButton_4")
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
