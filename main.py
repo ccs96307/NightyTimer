@@ -37,19 +37,19 @@ class MainWindow(QMainWindow):
         self.ui.pushButton_3.clicked.connect(self.exitEvent)
         self.ui.pushButton_4.hide()
 
-
         # Shortcut
         self.startShortcut = QShortcut(QKeySequence("Ctrl+s"), self)
         self.startShortcut.activated.connect(self.timeGo)
 
         self.leftMove = QShortcut(QKeySequence("Ctrl+left"), self)
+        self.rightMove = QShortcut(QKeySequence("Ctrl+right"), self)
+        self.upMove = QShortcut(QKeySequence("Ctrl+up"), self)
+        self.downMove = QShortcut(QKeySequence("Ctrl+down"), self)
+
         self.leftMove.activated.connect(lambda: self.shortcutMoveEvent('left'))
-        self.leftMove = QShortcut(QKeySequence("Ctrl+right"), self)
-        self.leftMove.activated.connect(lambda: self.shortcutMoveEvent('right'))
-        self.leftMove = QShortcut(QKeySequence("Ctrl+up"), self)
-        self.leftMove.activated.connect(lambda: self.shortcutMoveEvent('up'))
-        self.leftMove = QShortcut(QKeySequence("Ctrl+down"), self)
-        self.leftMove.activated.connect(lambda: self.shortcutMoveEvent('down'))
+        self.rightMove.activated.connect(lambda: self.shortcutMoveEvent('right'))
+        self.upMove.activated.connect(lambda: self.shortcutMoveEvent('up'))
+        self.downMove.activated.connect(lambda: self.shortcutMoveEvent('down'))
 
         self.exit = QShortcut(QKeySequence("Ctrl+D"), self)
         self.exit.activated.connect(self.exitEvent)
