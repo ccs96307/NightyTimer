@@ -17,6 +17,6 @@ example:<img src="/pic/example.png" alt="My cool timer"/>
 - [x] Transparent
 - [x] Move
 - [x] Automatically move to the desktop edge
-- [ ] Restart button
+- [x] Restart button
 - [ ] Colorful
 - [ ] Auto hide
