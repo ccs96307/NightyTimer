@@ -22,7 +22,8 @@ class MainWindow(QMainWindow):
         self.screenHeight = QDesktopWidget().screenGeometry().height()
 
         # LCD
-        self.ui.lcdNumber.display('00:00')
+        self.ui.lcdNumber.setDigitCount(8)
+        self.ui.lcdNumber.display('00:00:00')
 
         # Button
         self.start = True
@@ -33,9 +34,8 @@ class MainWindow(QMainWindow):
         self.ui.pushButton.clicked.connect(self.timeGo)
         self.ui.pushButton_2.setIcon(self.style().standardIcon(QStyle.SP_MediaStop))
         self.ui.pushButton_2.clicked.connect(self.initTime)
-        self.ui.pushButton_3.setIcon(self.style().standardIcon(QStyle.SP_TitleBarCloseButton))
+        self.ui.pushButton_3.setIcon(self.style().standardIcon(QStyle.SP_DialogCancelButton))
         self.ui.pushButton_3.clicked.connect(self.exitEvent)
-        self.ui.pushButton_4.hide()
 
         # Shortcut
         self.startShortcut = QShortcut(QKeySequence("Ctrl+s"), self)
@@ -55,7 +55,7 @@ class MainWindow(QMainWindow):
         self.exit.activated.connect(self.exitEvent)
 
     def initTime(self):
-        self.ui.lcdNumber.display('00:00')
+        self.ui.lcdNumber.display('00:00:00')
         self.sec = 0
         self.start = True
         self.ui.pushButton.setIcon(self.style().standardIcon(QStyle.SP_MediaPlay))
@@ -74,9 +74,12 @@ class MainWindow(QMainWindow):
     def LCDEvent(self):
         self.sec += 1
 
-        hour = self.sec//60
+        hour = self.sec//3600
+        min = self.sec%3600//60
         sec = self.sec%60
-        self.ui.lcdNumber.display('%02d:%02d' % (hour, sec))
+        print(hour, min, sec)
+
+        self.ui.lcdNumber.display('%02d:%02d:%02d' % (hour, min, sec))
 
     def mousePressEvent(self, event):
         if event.button() == Qt.LeftButton:

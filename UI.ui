@@ -50,9 +50,9 @@
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>150</x>
-      <y>111</y>
-      <width>101</width>
+      <x>155</x>
+      <y>110</y>
+      <width>100</width>
       <height>39</height>
      </rect>
     </property>
@@ -89,9 +89,9 @@ border-radius:35px;</string>
    <widget class="QPushButton" name="pushButton_2">
     <property name="geometry">
      <rect>
-      <x>49</x>
-      <y>111</y>
-      <width>101</width>
+      <x>55</x>
+      <y>110</y>
+      <width>100</width>
       <height>39</height>
      </rect>
     </property>
@@ -112,9 +112,9 @@ border-radius:35px;</string>
    <widget class="QPushButton" name="pushButton_3">
     <property name="geometry">
      <rect>
-      <x>251</x>
-      <y>111</y>
-      <width>101</width>
+      <x>255</x>
+      <y>110</y>
+      <width>100</width>
       <height>39</height>
      </rect>
     </property>
@@ -132,29 +132,11 @@ border-radius:35px;</string>
      <string/>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_4">
-    <property name="geometry">
-     <rect>
-      <x>352</x>
-      <y>111</y>
-      <width>50</width>
-      <height>39</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color: rgb(255, 255, 255);
-background-color: rgb(150, 150, 150);
-border-style:none;
-border:1px solid #3f3f3f; 
-
-padding:5px;
-min-height:20px;
-border-radius:35px;</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
+   <zorder>pushButton_3</zorder>
+   <zorder>pushButton_2</zorder>
+   <zorder>label</zorder>
+   <zorder>pushButton</zorder>
+   <zorder>lcdNumber</zorder>
   </widget>
  </widget>
  <resources/>
