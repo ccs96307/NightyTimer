@@ -1,6 +1,7 @@
 # Nighty Timer
 - A easy and fashion timer
-- Usage:
+- Usage:  
+    python3 main.py
    * Ctrl+D can exit.
    * Ctrl+"Arrow Key" can move the application.
 
