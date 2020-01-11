@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
-import base64
 import sys
+from base64 import b64decode
 from io import BytesIO
-from PyQt5.QtWidgets import *
-from PyQt5.QtGui import *
-from PyQt5.QtCore import *
+from PyQt5.QtWidgets import QShortcut, QDesktopWidget, QStyle, QApplication, QMainWindow
+from PyQt5.QtGui import QPixmap, QIcon, QKeySequence, QCursor
+from PyQt5.QtCore import Qt, QTimer, QPoint
 from PIL import Image, ImageQt
 from UI import Ui_MainWindow
 from icon import icon
@@ -17,7 +17,7 @@ class MainWindow(QMainWindow):
         self.ui.setupUi(self)
 
         # Icon
-        byte_data = base64.b64decode(icon)
+        byte_data = b64decode(icon)
         image_data = BytesIO(byte_data)
         image = Image.open(image_data)
         image = image.convert('RGBA')
