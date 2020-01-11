@@ -1,9 +1,13 @@
 # -*- coding: utf-8 -*-
+import base64
 import sys
+from io import BytesIO
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
+from PIL import Image, ImageQt
 from UI import Ui_MainWindow
+from icon import icon
 
 
 class MainWindow(QMainWindow):
@@ -11,6 +15,15 @@ class MainWindow(QMainWindow):
         super(MainWindow, self).__init__()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
+
+        # Icon
+        byte_data = base64.b64decode(icon)
+        image_data = BytesIO(byte_data)
+        image = Image.open(image_data)
+        image = image.convert('RGBA')
+        qImage = ImageQt.ImageQt(image)
+        image = QPixmap.fromImage(qImage)
+        self.setWindowIcon(QIcon(image))
 
         # Hide Window Title
         self.setFixedSize(self.width(), self.height())
